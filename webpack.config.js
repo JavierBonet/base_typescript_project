@@ -8,12 +8,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: './src/index.tsx',
-  devServer: {},
+  devServer: {
+    historyApiFallback: true,
+  },
   target: 'web',
   devtool: isDevelopment && 'source-map',
   output: {
     filename: 'bundle.[fullhash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   plugins: [
     new HtmlWebpackPlugin({
